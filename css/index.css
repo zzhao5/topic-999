@@ -1,0 +1,64 @@
+@import url(_reset.css);
+html, body {
+  background-color: #fef0d2;
+}
+
+.wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 158.7962962963%;
+  background: url(../images/bg.jpg) no-repeat 0 0 #fef0d2;
+  background-size: 100%;
+}
+.wrap .links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 78.7037037037%;
+  display: flex;
+  justify-content: space-between;
+}
+.wrap .links a {
+  display: block;
+  position: relative;
+  width: 162rem;
+  padding-top: 230rem;
+}
+.wrap .links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 128rem;
+  height: 50rem;
+  background: url(../images/btn.png) no-repeat 0 0;
+  background-size: 100% 100%;
+}
+.wrap .links1 {
+  padding-top: 84.2592592593%;
+  z-index: 3;
+}
+.wrap .links2 {
+  z-index: 2;
+  padding-top: 130.5555555556%;
+}
+.wrap .button {
+  display: block;
+  margin: 0 auto;
+  width: 51.0185185185%;
+  padding-top: 12.5%;
+  background: url(../images/link.png) no-repeat 0 0;
+  background-size: 100% 100%;
+}
+.wrap::after {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 9.2592592593%;
+}
+
+/*# sourceMappingURL=index.css.map */

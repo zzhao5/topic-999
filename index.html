@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <link rel="stylesheet" href="./css/index.css" />
+    <title>999澳诺 请你听故事长知识</title>
+    <script>
+        function setFS() {
+            var html = document.querySelector('html');
+            var width = html.getBoundingClientRect().width;
+            html.style.fontSize = width / 1000 + 'px';
+        }
+        setFS();
+        window.addEventListener('resize', setFS);
+    </script>
+    <script>
+        (function (w, d, s, q, i) {
+            w[q] = w[q] || [];
+            var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
+            j.async = true;
+            j.id = 'beacon-aplus';
+            j.src = 'https://d.alicdn.com/alilog/mlog/aplus/' + i + '.js';
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'aplus_queue', '203467608');
+
+        //集成应用的appKey
+        aplus_queue.push({
+            action: 'aplus.setMetaInfo',
+            arguments: ['appKey', '655f541558a9eb5b0a0fc39e']
+        });
+    </script>
+    <script src="https://s1.xmcdn.com/yx/web-jssdk/1.5.1/dist_cdn/xmsdk.min.js"></script>
+    <script src="https://s1.xmcdn.com/lib/jssdk/1.1.1/build/ly.js"></script>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="links links1">
+            <a href="" data-link="小猪佩奇"></a>
+            <a href="" data-link="海底小纵队"></a>
+            <a href="" data-link="奇妙萌可"></a>
+            <a href="" data-link="咖宝车神"></a>
+        </div>
+        <div class="links links2">
+            <a href="" data-link="二十万个为什么"></a>
+            <a href="" data-link="小猪屏蓬"></a>
+            <a href="" data-link="爆笑三国"></a>
+            <a href="" data-link="身体的 100 个秘密"></a>
+        </div>
+        <a href="" data-link="活动专题" class="button"></a>
+    </div>
+
+    <script src="./js/jquery-3.7.0.min.js"></script>
+    <script src="./js/index.js"></script>
+
+    <script>
+        $(function () {
+            var basicSiteUrl = 'https://www.adtais.com';
+            var opt = {
+                link: basicSiteUrl + '/ximalaya/999/',
+            };
+            
+            $('.wrap a').each(function (i) {
+                $(this).click(function () {
+                    var href = $(this).attr('href');
+                    var data = $(this).attr('data-link');
+                    everyDayCount(7, function () {
+                        location.href = href;
+                    });
+                    aplus_queue.push({
+                        action: 'aplus.record',
+                        arguments: ['byhealth_link' + (i + 1), 'CLK']
+                    });
+                    return false;
+                });
+            });
+            post({
+                url: basicSiteUrl + '/tais-boot/h5/site/xmlyZzShareJsAuthorization',
+                data: { codeLink: opt.link },
+                callback: function (data) {
+                    if (data.code == 200) {
+                        var apiList = ['nav.setMenu',];
+                        ly.config({
+                            timestamp: data.result.timestamp,
+                            nonce: data.result.nonceStr,
+                            signature: data.result.signature,
+                            appId: data.result.appId, // 必填，应用ID
+                            apiList: apiList,
+                        });
+                        ly.ready(function () {
+                            ly.invokeApp('nav.setMenu', {
+                                items: [],
+                                success() {
+                                },
+                            });
+                        });
+                        ly.error(function (err) {
+                            console.warn(JSON.stringify(err));
+                        });
+                    }
+                }
+            });
+
+
+            // 上报 PV
+            aplus_queue.push({
+                action: 'aplus.sendPV',
+                arguments: [{ is_auto: false }, {
+                    // 这里传参
+                }]
+            });
+        });
+    </script>
+</body>
+
+</html>

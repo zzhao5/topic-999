@@ -1,0 +1,65 @@
+@import url(_reset.css);
+
+@function po($width) {
+  @return calc($width / 1080) * 100%;
+}
+html, body {
+  background-color: #fef0d2;
+}
+.wrap {
+  position: relative;
+  width: 100%;
+  padding-top: po(1715);
+  background: url(../images/bg.jpg) no-repeat 0 0 #fef0d2;
+  background-size: 100%;
+  .links {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: po(850);
+    display: flex;
+    justify-content: space-between;
+    a {
+      display: block;
+      position: relative;
+      width: 162rem;
+      padding-top: 230rem;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 128rem;
+        height: 50rem;
+        background: url(../images/btn.png) no-repeat 0 0;
+        background-size: 100% 100%;
+      }
+    }
+  }
+  .links1 {
+    padding-top: po(910);
+    z-index: 3;
+  }
+  .links2 {
+    z-index: 2;
+    padding-top: po(1410);
+  }
+  .button {
+    display: block;
+    margin: 0 auto;
+    width: po(551);
+    padding-top: po(135);
+    background: url(../images/link.png) no-repeat 0 0;
+    background-size: 100% 100%;
+  }
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: po(100);
+  }
+}
