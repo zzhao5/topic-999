@@ -20,6 +20,16 @@
         window.addEventListener('resize', setFS);
     </script>
     <script>
+        (function(a, e, f, g, b, c, d) {
+         a.ClickiTrackerName = b;
+         a[b] = a[b] || function() {(a[b].queue = a[b].queue || []).push(arguments)};
+         a[b].start = +new Date; c = e.createElement(f); d = e.getElementsByTagName(f)[0];
+         c.async = 1; c.src = g; d.parentNode.insertBefore(c, d)
+        })(window, document, 'script', '//stm-cdn.cn.miaozhen.com/clicki.min.js?v='+Math.round(new Date().getTime()/1000/300), 'stm_clicki');
+        stm_clicki('create', 'dc-2000595', 'auto');
+        stm_clicki('send', 'pageview');
+        </script>
+    <script>
         (function (w, d, s, q, i) {
             w[q] = w[q] || [];
             var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
@@ -43,18 +53,18 @@
 <body>
     <div class="wrap">
         <div class="links links1">
-            <a href="" data-link="小猪佩奇"></a>
-            <a href="" data-link="海底小纵队"></a>
-            <a href="" data-link="奇妙萌可"></a>
-            <a href="" data-link="咖宝车神"></a>
+            <a href="https://xima.tv/1_bF6qTG?_sonic=0" data-link="小猪佩奇"></a>
+            <a href="https://xima.tv/1_SWwsr9?_sonic=0" data-link="海底小纵队"></a>
+            <a href="https://xima.tv/1_LsIV25?_sonic=0" data-link="奇妙萌可"></a>
+            <a href="https://xima.tv/1_Gs6ha8?_sonic=0" data-link="咖宝车神"></a>
         </div>
         <div class="links links2">
-            <a href="" data-link="二十万个为什么"></a>
-            <a href="" data-link="小猪屏蓬"></a>
-            <a href="" data-link="爆笑三国"></a>
-            <a href="" data-link="身体的 100 个秘密"></a>
+            <a href="https://xima.tv/1_s4gPz5?_sonic=0" data-link="二十万个为什么"></a>
+            <a href="https://xima.tv/1_z6WNhe?_sonic=0" data-link="小猪屏蓬"></a>
+            <a href="https://xima.tv/1_KNompd?_sonic=0" data-link="爆笑三国"></a>
+            <a href="https://xima.tv/1_LzJcl3?_sonic=0" data-link="身体的 100 个秘密"></a>
         </div>
-        <a href="" data-link="活动专题" class="button"></a>
+        <a href="https://pages.ximalaya.com/mkt/act/13cbbe6bb9c975e0" data-link="活动专题" class="button"></a>
     </div>
 
     <script src="./js/jquery-3.7.0.min.js"></script>
@@ -71,14 +81,14 @@
                 $(this).click(function () {
                     var href = $(this).attr('href');
                     var data = $(this).attr('data-link');
-                    everyDayCount(7, function () {
-                        location.href = href;
-                    });
                     aplus_queue.push({
                         action: 'aplus.record',
-                        arguments: ['byhealth_link' + (i + 1), 'CLK']
+                        arguments: ['link1', 'CLK', {
+                            name: data,
+                        }],
                     });
-                    return false;
+                    // stm_clicki('send', 'event', 'button', 'click', 'nav buttons', 4);
+                    // stm_clicki('send', 'event', 'Category', 'Action', 'Label', Value);
                 });
             });
             post({
@@ -97,8 +107,7 @@
                         ly.ready(function () {
                             ly.invokeApp('nav.setMenu', {
                                 items: [],
-                                success() {
-                                },
+                                success() {},
                             });
                         });
                         ly.error(function (err) {
