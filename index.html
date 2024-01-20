@@ -20,6 +20,16 @@
         window.addEventListener('resize', setFS);
     </script>
     <script>
+        (function(a, e, f, g, b, c, d) {
+         a.ClickiTrackerName = b;
+         a[b] = a[b] || function() {(a[b].queue = a[b].queue || []).push(arguments)};
+         a[b].start = +new Date; c = e.createElement(f); d = e.getElementsByTagName(f)[0];
+         c.async = 1; c.src = g; d.parentNode.insertBefore(c, d)
+        })(window, document, 'script', '//stm-cdn.cn.miaozhen.com/clicki.min.js?v='+Math.round(new Date().getTime()/1000/300), 'stm_clicki');
+        stm_clicki('create', 'dc-2000615', 'auto');
+        stm_clicki('send', 'pageview');
+        </script>
+    <script>
         (function (w, d, s, q, i) {
             w[q] = w[q] || [];
             var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
@@ -56,15 +66,15 @@
                     </div>
                     <div class="title"></div>
                 </div>
-                <a class="item" data-link="link1" href="https://m.ximalaya.com/sound/654059423">
+                <a class="item" data-link="link1" data-name="【第二季】1、【侦探社】能治咳嗽的糖（上）" href="https://m.ximalaya.com/sound/654059423">
                     <span class="text"></span>
                     <span class="btn"></span>
                 </a>
-                <a class="item" data-link="link2" href="https://m.ximalaya.com/sound/654059436">
+                <a class="item" data-link="link2" data-name="【第二季】2、【侦探社】能治咳嗽的糖（下）" href="https://m.ximalaya.com/sound/654059436">
                     <span class="text"></span>
                     <span class="btn"></span>
                 </a>
-                <a class="item" data-link="link3" href="https://m.ximalaya.com/sound/654059442">
+                <a class="item" data-link="link3" data-name="【小知识】国家级非遗宝物——梨膏糖" href="https://m.ximalaya.com/sound/654059442">
                     <span class="text"></span>
                     <span class="btn"></span>
                 </a>
@@ -78,15 +88,15 @@
                     </div>
                     <div class="title"></div>
                 </div>
-                <a class="item" data-link="link4" href="https://m.ximalaya.com/sound/545605707">
+                <a class="item" data-link="link4" data-name="022 狐爸爸住院了1 |守护兽狐小九第一季" href="https://m.ximalaya.com/sound/545605707">
                     <span class="text"></span>
                     <span class="btn"></span>
                 </a>
-                <a class="item" data-link="link5" href="https://m.ximalaya.com/sound/545606302">
+                <a class="item" data-link="link5" data-name="023 狐爸爸住院了2 |守护兽狐小九第一季" href="https://m.ximalaya.com/sound/545606302">
                     <span class="text"></span>
                     <span class="btn"></span>
                 </a>
-                <a class="item" data-link="link6" href="https://m.ximalaya.com/sound/604117102">
+                <a class="item" data-link="link6" data-name="第二季16集 哮天犬鼻塞啦1 | 守护兽狐小九" href="https://m.ximalaya.com/sound/604117102">
                     <span class="text"></span>
                     <span class="btn"></span>
                 </a>
@@ -100,15 +110,15 @@
                     </div>
                     <div class="title"></div>
                 </div>
-                <a class="item" data-link="link7" href="https://m.ximalaya.com/sound/544301396">
+                <a class="item" data-link="link7" data-name="汉堡王子 | 第31口 惊人的发现" href="https://m.ximalaya.com/sound/544301396">
                     <span class="text"></span>
                     <span class="btn"></span>
                 </a>
-                <a class="item" data-link="link8" href="https://m.ximalaya.com/sound/544565907">
+                <a class="item" data-link="link8" data-name="汉堡王子 | 第32口 汉堡包为什么不健康" href="https://m.ximalaya.com/sound/544565907">
                     <span class="text"></span>
                     <span class="btn"></span>
                 </a>
-                <a class="item" data-link="link9" href="https://m.ximalaya.com/sound/544851112">
+                <a class="item" data-link="link9" data-name="汉堡王子 | 第33口 国王的选择" href="https://m.ximalaya.com/sound/544851112">
                     <span class="text"></span>
                     <span class="btn"></span>
                 </a>
@@ -151,23 +161,16 @@
                 $('.item[data-link="' + item + '"]').addClass('active');
                 return true;
             });
-            function setState(fn) {
+            function setState() {
                 var linked = cookieset.get('linkClick');
                 var shared = cookieset.get('shareClick');
-                if (!medal && linked && (((inApp || inWeixin) && shared) || (!inApp && !inWeixin))) {
+                if (!medal && linked) {
                     mask.removeClass('disable');
                     btnMedal.addClass('active');
                     medal = true;
-                    if (fn) fn();
                 }
             }
-            function showPic() {
-                $('.mask_wrap').addClass('fn-hide');
-                $('.mask_pic').removeClass('fn-hide');
-            }
-            setState(function (){
-                if (cookieset.get('gotClick')) showPic();
-            });
+            setState();
 
             var hideMask = function () {
                 mask.addClass('fn-hide');
@@ -180,10 +183,9 @@
 
                 aplus_queue.push({
                     action: 'aplus.record',
-                    arguments: ['link10', 'CLK', {
-                        type: medal ? '已领取' : '未领取',
-                    }],
+                    arguments: [medal ? 'link14' : 'link10', 'CLK'],
                 });
+                stm_clicki('send', 'event', 'button', 'click', medal ? '查看我的勋章按钮' : '收听节目领取公益勋章按钮');
             });
             $('.btn_close').click(function () {
                 hideMask();
@@ -195,10 +197,9 @@
                         action: 'aplus.record',
                         arguments: ['link11', 'CLK'],
                     });
-                    cookieset.set('gotClick', 'true', {
-                        expires: cookieTime,
-                    });
-                    showPic();
+                    stm_clicki('send', 'event', 'button', 'click', '分享勋章海报按钮');
+                    $('.mask_wrap').addClass('fn-hide');
+                    $('.mask_pic').removeClass('fn-hide');
                 } else {
                     var t = $('.list_1').offset().top;
 
@@ -206,6 +207,7 @@
                         action: 'aplus.record',
                         arguments: ['link12', 'CLK'],
                     });
+                    stm_clicki('send', 'event', 'button', 'click', '继续完成任务按钮');
                     window.scrollTo({
                         left: 0,
                         top: t,
@@ -222,10 +224,14 @@
                     var timer = null;
                     var href = _this.attr('href');
                     var data = _this.attr('data-link');
+                    var name = _this.attr('data-name');
                     aplus_queue.push({
                         action: 'aplus.record',
-                        arguments: ['link' + (i + 1), 'CLK'],
+                        arguments: ['link' + (i + 1), 'CLK', {
+                            name: name,
+                        }],
                     });
+                    stm_clicki('send', 'event', 'links', 'click', name);
                     _this.addClass('active');
                     var links = cookieset.get('linkClick');
                     links && links.split(',').some(function (item) {
@@ -285,6 +291,7 @@
                                                     shareType: data.channel,
                                                 }],
                                             });
+                                            stm_clicki('send', 'event', 'share', 'click', '主 APP ' + data.channel);
                                             cookieset.set('shareClick', 'true', {
                                                 expires: cookieTime,
                                             });
@@ -329,6 +336,8 @@
                                             shareType: '朋友圈',
                                         }],
                                     });
+                                    stm_clicki('send', 'event', 'share', 'click', '朋友圈');
+
                                 },
                             });
                             wx.updateAppMessageShareData({
@@ -347,6 +356,7 @@
                                             shareType: '微信好友',
                                         }],
                                     });
+                                    stm_clicki('send', 'event', 'share', 'click', '微信好友');
                                 },
                             });
                         });
